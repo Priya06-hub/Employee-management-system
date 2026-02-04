@@ -551,9 +551,9 @@ def mn_task(request):
             Task.objects.create(
                 task_title=task_title,
                 description=description,
-                Emp_id=assigned_to,          # FK object
+                Emp_id=assigned_to,          
                 due_date=due_date,
-                manager_id=manager_id,      # FK id
+                manager_id=manager_id,      
                 start_date=assign_date,
                 remark=remark
             )
@@ -569,22 +569,20 @@ def mn_task(request):
     employees = Employee.objects.all()
     return render(request, 'mn_tasks.html', {'employees': employees})
 
-def employee_task_list(request):
+def emp_task_list(request):
     emp_id = request.session.get('Emp_id')
-
     if not emp_id:
         messages.error(request, "Please login first.")
         return redirect('login')
 
     if request.method == "POST":
-        task_id = request.POST.get('task_id')
+        id = request.POST.get('task_id')
 
-        task = Task.objects.get(task_id=task_id, Emp_id_id=emp_id)
-        # get_object_or_404(
-        #     Task,
-        #     task_id=task_id,
-        #     Emp_id_id=emp_id   # security: only own task
-        # )
+        task =  get_object_or_404(
+            Task,
+            task_id=id,
+            Emp_id_id=emp_id   
+        )
 
         if task.status != "Completed":
             task.status = "Completed"
@@ -592,45 +590,8 @@ def employee_task_list(request):
             task.save()
             messages.success(request, "Task marked as completed.")
 
-        return redirect('employee_task_list')
-
-    # 📋 SHOW TASK LIST
+        return redirect('emp_task_list')
     tasks = Task.objects.filter(Emp_id__Emp_id=emp_id)
 
     return render(request, 'emp_task_list.html', {'tasks': tasks})
 
-
-# def assign_Task(request):
-#     mng_id=request.session.get('Emp_id')
-#     if request.method == "POST":
-#         task_title = request.POST.get('task_title')
-#         description = request.POST.get('description')
-#         assigned_to_id = request.POST.get('assigned_to')
-#         priority = request.POST.get('priority')
-#         due_date = request.POST.get('due_date')
-#         manager=mng_id
-#         assign_date=request.POST.get('assign_date')
-#         # due_date=request.POST.get('due_date')
-#         complted_date=request.POST.get('com_date')
-#         remark=request.POST.get('remark')
-
-#         # Get the assigned employeeBN
-#         assigned_to = Employee.objects.get(id=assigned_to_id)
-
-#         # Create the task
-#         Task.objects.create(
-#             task_title=task_title,
-#             description=description,
-#             Emp_id_id=assigned_to,
-#             priority=priority,
-#             due_date=due_date,
-#             manager_id=manager,
-#             start_date=assign_date,
-#             complted_date=complted_date,
-#             remark=remark
-#         )
-
-#         # return redirect('task_list')  # Redirect to a task list page or any other page
-
-#     employees = Employee.objects.all()  # Fetch all employees for the dropdown
-#     return render(request, 'mn_tasks.html', {'employees': employees})

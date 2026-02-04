@@ -25,9 +25,9 @@ urlpatterns=[
     path('leave_list/',views.leave_list,name='leave_list'),
     path('mn_salary/',views.mn_salary,name='manager_salary'),
     path('mn_tasks/',views.mn_task,name='manager_task'),
-    path('mn_performance/',views.mn_performance,name='manger_performance'),
+    path('mn_performance/',views.mn_performance,name='manager_performance'),
     path('task_list/', views.task_list, name='task_list'),
-    path('emp_task_list/', views.employee_task_list, name='emp_task_list'),
+    path('emp_task_list/', views.emp_task_list, name='emp_task_list'),
     # path('as_task/', views.assign_Task, name='assign_task'),
 
     # path('profile/<int:emp_id>/', views.view_profile, name='view_profile'),

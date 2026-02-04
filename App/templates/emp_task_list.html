@@ -49,7 +49,7 @@
                 {% if task.status != "Completed" %}
                 <form method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <input type="hidden" name="task_id" value="{{ task.task_id }}">
                     <button class="btn btn-complete" type="submit">Complete</button>
                 </form>
                 {% else %}
