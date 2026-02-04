@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMS - Employee Management System</title>
+    {% load static %}
+     <link rel="stylesheet" href="../static/css/style.css">
+     <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}" class="logo">EMS-EMPLOYEE MANAGEMENT SYSTEM</a>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT US</a></li>
+            <li><a href="{% url 'features' %}">FEATURES</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+            <li><a href="{% url 'login' %}" class="btn-teal">LOGIN</a></li>
+            
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div>
+            <h2 class="logo">EMS-EMPLOYEE MANAGEMENT SYSTEM</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div  class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="{% url 'features' %}">Attendance tracking</a></li>
+                <li><a href="{% url 'features' %}">Salary management</a></li>
+                <li><a href="{% url 'features' %}">Task management</a></li>
+                <li><a href="{% url 'features' %}">Performance management</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

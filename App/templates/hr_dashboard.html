@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Portal</title>
+
+    <link rel="stylesheet" href="{% static 'css/hr_dashboard.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+    <h1>HR Portal</h1>
+    <div class="header-actions">
+        <button class="btn profile-btn" onclick="location.href='/profile/'">Manage Profile</button>
+        <a href="/logout/"  class="logout-btn">Logout</a>
+
+        <!-- <button class="btn logout-btn" onclick="location.href='/Logout/'">Logout</button> -->
+    </div>
+</header>
+
+<!-- DASHBOARD -->
+<main class="dashboard-container">
+    <div class="card" onclick="location.href='/mark_attendance/'">
+        <i class="fa-solid fa-calendar-check"></i>
+        <p>Mark Attendance</p>
+    </div>
+
+
+    <div class="card" onclick="location.href='/mn_attendance/'">
+        <i class="fa-solid fa-calendar-check"></i>
+        <p>Check Attendance</p>
+    </div>
+
+    <div class="card" onclick="location.href='/modify_attendance/'">
+        <i class="fa-solid fa-user-pen"></i>
+        <p>Modify Attendance</p>
+    </div>
+
+    <div class="card" onclick="location.href='/leave_list/'">
+        <i class="fa-solid fa-file-circle-check"></i>
+        <p>Approve / Reject Leave</p>
+    </div>
+
+    <div class="card" onclick="location.href='/salary/'">
+        <i class="fa-solid fa-wallet"></i>
+        <p>Generate Salary</p>
+    </div>
+
+    <div class="card" onclick="location.href='/chatbot/'">
+        <i class="fa-solid fa-robot"></i>
+        <p>Chatbot</p>
+    </div>
+
+</main>
+
+</body>
+</html>

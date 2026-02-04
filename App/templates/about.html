@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= ABOUT HERO ================= -->
+<section class="hero about-hero">
+    <div class="hero-image about-image">
+        <img src="{% static 'img/about_illustration.svg' %}" alt="About EMS">
+    </div>
+
+    <div class="hero-content about-text">
+        <h1>Perfect Solution for Thriving Organizations</h1>
+        <p>
+            Employee Management System (EMS) is a modern HR solution designed to
+            centralize employee data, automate HR operations, and enhance workforce
+            productivity. It provides a secure and scalable platform for managing
+            employee information efficiently.
+        </p>
+    </div>
+</section>
+
+<!-- ================= OUR MISSION ================= -->
+<section class="about-section">
+    <h2>Our Mission</h2>
+    <p>
+        Our mission is to simplify human resource management by providing a
+        reliable, user-friendly, and secure system that reduces administrative
+        workload and empowers organizations to focus on growth, performance,
+        and employee satisfaction.
+    </p>
+</section>
+
+<!-- ================= WHAT EMS OFFERS ================= -->
+<section class="about-features">
+    <h2>What EMS Offers</h2>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Centralized Employee Data</h3>
+            <p>
+                Maintain complete employee records including personal details,
+                job roles, documents, and departmental assignments in one place.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Smart Attendance & Leave</h3>
+            <p>
+                Automate attendance tracking and leave management with real-time
+                visibility for employees, managers, and HR teams.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Performance Monitoring</h3>
+            <p>
+                Track employee performance, appraisals, and feedback to support
+                data-driven HR decisions.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Secure & Role-Based Access</h3>
+            <p>
+                Ensure data security with role-based access control for employees,
+                managers, HR, and administrators.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY EMS ================= -->
+<section class="about-section light-bg">
+    <h2>Why Choose EMS?</h2>
+    <p>
+        EMS reduces paperwork, minimizes human errors, and ensures compliance
+        with organizational policies and labour regulations. Its intuitive design
+        and real-time reporting capabilities make HR operations faster, smarter,
+        and more transparent.
+    </p>
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+<section class="cta-section">
+    <h2>Empower Your HR Operations</h2>
+    <p>
+        Transform the way you manage employees with a powerful and flexible
+        Employee Management System.
+    </p>
+    <a href="{% url 'login' %}" class="btn-teal">Explore EMS</a>
+</section>
+
+{% endblock %}

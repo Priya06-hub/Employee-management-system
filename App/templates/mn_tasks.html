@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Task | Manager Portal</title>
+    <link rel="stylesheet" href="{% static 'css/mn_tasks.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .top-header { background-color: #007bff; color: #fff; padding: 15px; text-align: center; }
+        .form-container { background-color: #fff; margin: 30px auto; padding: 25px; border-radius: 10px; width: 80%; max-width: 800px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .form-row { display: flex; gap: 20px; margin-bottom: 15px; }
+        .form-group { flex: 1; display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 5px; }
+        input, select, textarea { padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
+        textarea { resize: vertical; }
+        .btn-submit { background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .btn-submit:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<header class="top-header">
+    <h2>Assign New Task</h2>
+</header>
+
+<section class="form-container">
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Task Title & Priority -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Task Title</label>
+                <input type="text" name="task_title" placeholder="Enter task title" required>
+            </div>
+
+            <div class="form-group">
+                <label>Priority</label>
+                <select name="priority" required>
+                    <option value="">Select Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" rows="4" placeholder="Enter task description" required></textarea>
+        </div>
+
+        <!-- Employee & Manager -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Assign To (Employee)</label>
+                <select name="assigned_to" required>
+                    <option value="">Select Employee</option>
+                    {% for emp in employees %}
+                        <option value="{{ emp.Emp_id }}">{{ emp.Emp_id }} - {{ emp.firstName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Manager ID</label>
+                <input type="text" value="{{ request.session.Emp_id }}" readonly>
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" name="assign_date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" name="due_date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Completed Date</label>
+                <input type="date" name="com_date">
+            </div>
+        </div>
+
+        <!-- Remark -->
+        <div class="form-group">
+            <label>Remark</label>
+            <textarea name="remark" rows="2" placeholder="Add any remark"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-check"></i> Assign Task
+        </button>
+    </form>
+    <br>
+    {% if error %}
+            <div class="error-msg" style="font-weight: bolder;">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            {% if success %}
+            <div class="success-msg">
+                {{ success }}
+            </div>
+            {% endif %}
+  <br>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Performance | Manager Portal</title>
+
+    <link rel="stylesheet" href="{% static 'css/mn_performance.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="top-header">
+    <h2>Update Performance of Employee (Monthly)</h2>
+</header>
+
+<!-- EMPLOYEE ID INPUT -->
+<section class="employee-search">
+    <label>Enter Employee ID</label>
+    <input type="text" id="employeeIdInput" placeholder="EMP001">
+    <button onclick="loadEmployee()">Load Details</button>
+</section>
+
+<!-- PERFORMANCE FORM -->
+<section class="form-container" id="performanceFormSection" style="display:none;">
+    <h3>Employee Performance Details</h3>
+
+    <form id="performanceForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Performance ID</label>
+                <input type="text" id="performanceId" readonly>
+            </div>
+            <div class="form-group">
+                <label>Employee ID</label>
+                <input type="text" id="employeeId" readonly>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Attendance Score (%)</label>
+                <input type="number" id="attendanceScore" readonly>
+            </div>
+            <div class="form-group">
+                <label>Task Score (%)</label>
+                <input type="number" id="taskScore" readonly>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Reviewed By (Manager ID)</label>
+                <input type="text" id="reviewedBy" readonly>
+            </div>
+            <div class="form-group">
+                <label>Reviewed Date</label>
+                <input type="date" id="reviewedDate" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Performance Score (%)</label>
+            <input type="text" id="performanceScore" readonly>
+        </div>
+
+        <button type="submit" class="btn-submit">Update Performance</button>
+    </form>
+</section>
+
+<script src="{% static 'dashboard/js/performance.js' %}"></script>
+</body>
+</html>

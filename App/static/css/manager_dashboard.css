@@ -1,0 +1,96 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* ✅ prevents scrolling */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body {
+    background: linear-gradient(to bottom, #e9fbfd, #f9feff);
+}
+
+/* HEADER */
+.top-header {
+    height: 70px;              /* 🔽 reduced */
+    background: white;
+    padding: 0 40px;           /* 🔽 reduced */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-header h1 {
+    font-size: 26px;
+    color: #2bbac6;
+}
+
+/* BUTTONS */
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 8px 18px;         /* 🔽 reduced */
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile {
+    background: #2bbac6;
+    color: white;
+}
+
+.logout {
+    background: #ff6b6b;
+    color: white;
+}
+
+/* DASHBOARD GRID */
+.dashboard-container {
+    height: calc(100vh - 70px); /* fits screen exactly */
+    display: grid;
+    grid-template-columns: repeat(3, 280px); /* 🔽 narrower */
+    grid-template-rows: repeat(2, 170px);    /* 🔽 shorter */
+    gap: 30px;                               /* 🔽 reduced */
+    justify-content: center;
+    align-content: center;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.card i {
+    font-size: 36px;           /* 🔽 reduced */
+    color: #2bbac6;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* HOVER */
+.card:hover {
+    transform: translateY(-6px);
+}

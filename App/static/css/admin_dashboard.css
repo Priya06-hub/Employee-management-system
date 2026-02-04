@@ -1,0 +1,17 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.orange { background:#ff9f43; }
+.purple { background:#5f27cd; }
+.teal { background:#1dd1a1; }
+.blue { background:#54a0ff; }

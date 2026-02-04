@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Portal</title>
+
+    <link rel="stylesheet" href="{% static 'css/manager_dashboard.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-header">
+    <h1>Manager Portal</h1>
+    <div class="header-actions">
+        <button class="btn profile" onclick="location.href='/profile/'">Manage Profile</button>
+        <a href="/logout/"  class="logout-btn">Logout</a>
+        <!-- <button class="btn logout">Logout</button> -->
+    </div>
+</header>
+
+<!-- DASHBOARD -->
+<main class="dashboard-container">
+    <div class="card" onclick="location.href='/mark_attendance/'">
+        <i class="fas fa-calendar-check"></i>
+        <p>Mark Attendance</p>
+    </div>
+
+    <div class="card" onclick="location.href='/mn_attendance/'">
+        <i class="fas fa-calendar-check"></i>
+        <p>Check Attendance</p>
+    </div>
+
+    <div class="card" onclick="location.href='/apply_leave/'">
+        <i class="fas fa-plane-departure"></i>
+        <p>Apply for Leave</p>
+    </div>
+
+    <div class="card" onclick="location.href='/mn_salary/'">
+        <i class="fas fa-wallet"></i>
+        <p>Check Salary</p>
+    </div>
+
+    <div class="card" onclick="location.href='/mn_tasks/'">
+        <i class="fas fa-tasks"></i>
+        <p>Task Assignment</p>
+    </div>
+
+    <div class="card" onclick="location.href='/mn_performance/'">
+        <i class="fas fa-chart-line"></i>
+        <p>Update Performance</p>
+    </div>
+
+    <div class="card" onclick="location.href='/chatbot/'">
+        <i class="fas fa-robot"></i>
+        <p>Chatbot</p>
+    </div>
+        <div class="card" onclick="location.href='/change_password/'">
+        <i class="fas fa-key"></i>
+        <p>Change Password</p>
+    </div>
+
+
+</main>
+
+</body>
+</html>

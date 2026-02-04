@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #e9fbfd;
+}
+
+/* Header */
+.top-header {
+    background: white;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.top-header h2 {
+    color: #2bbecf;
+}
+
+.header-actions .btn {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.profile {
+    background: #2bbecf;
+    color: white;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    display: inline-flex;            /* fixes alignment */
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #ff6b6b, #ee5253);
+    color: #ffffff;
+
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 12px;
+    cursor: pointer;
+
+    text-decoration: none;           /* 🔥 removes underline */
+    text-transform: uppercase;
+
+    transition: all 0.25s ease;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #ee5253, #ff6b6b);
+    transform: translateY(-1px);
+}
+
+/* Dashboard Grid */
+.dashboard {
+    padding: 60px 8%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card i {
+    font-size: 42px;
+    color: #2bbecf;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #333;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.15);
+}
+
+.primary-btn {
+    background-color: #22b8c7;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+    background-color: #17a2b8;
+}
+

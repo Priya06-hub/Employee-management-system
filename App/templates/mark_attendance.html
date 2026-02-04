@@ -1,0 +1,7 @@
+
+
+
+<form method="POST" action="{% url 'mark_attendance' %}">
+    {% csrf_token %}
+    <button type="submit">Mark Attendance</button>
+</form>

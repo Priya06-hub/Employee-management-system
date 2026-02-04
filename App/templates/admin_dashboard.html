@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Welcome, Admin</h2>
+
+<div class="cards">
+    <div class="card orange">Total Employees<br><strong>2</strong></div>
+    <div class="card purple">On Leave Today<br><strong>0</strong></div>x
+    <div class="card teal">Total Departments<br><strong>6</strong></div>
+    <div class="card blue">Pending Approvals<br><strong>0</strong></div>
+</div>
+<ul>
+    <li><a href="{% url 'create_profile' %}">create_profile</a></li>
+    <li><a href="{% url 'about' %}">Upload document</a></li>
+    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+</ul>
+<!-- <script src="{% static 'js/dashboard.js' %}"></script> -->
+{% endblock %}

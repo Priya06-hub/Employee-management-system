@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Approval</title>
+    <link rel="stylesheet" href="{% static 'css/leave_approval.css' %}">
+
+<!-- <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .approve {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+        }
+        .reject {
+            background-color: #dc3545;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+        }
+    </style> -->
+</head>
+<body>
+
+<h2>Leave Approval</h2>
+
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>Leave Type</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Total Days</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    <!-- Example Row -->
+    {% for l in leaves %}
+    <tr>
+        <td>{{ l.Emp_id }}</td>
+        <td>{{ l.leave_type }}</td>
+        <td>{{ l.start_date }}</td>
+        <td>{{ l.end_date }}</td>
+        <td>{{ l.Total_days }}</td>
+        <td>{{ l.status }}</td>
+        <td>
+            <form method="POST" action="{% url 'leave_approval' l.leave_id %}">
+                {% csrf_token %}
+                <button type="submit" name="action" value="approve">Approve</button>
+                <button type="submit" name="action" value="reject">Reject</button>
+                <button type="submit" name="action" value="update">Update</button>
+            </form>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7">No Leave Requests</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<!-- <script src="{% static 'hr/js/leave_approval.js' %}"></script> -->
+
+</body>
+</html>
+

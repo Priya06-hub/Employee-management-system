@@ -1,0 +1,27 @@
+<h2>Edit Employee Profile</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label> Emp-id:</label>
+    <input type="text" name="emp-id" placeholder="enter emp-id"> 
+    <!-- Personal -->
+    <input name="f_name" value="{{ emp.F_Name }}">
+    <input name="l_name" value="{{ emp.L_Name }}">
+    <textarea name="address">{{ emp.Address }}</textarea>
+    <input name="phone" value="{{ emp.Phone }}">
+    <input name="email" value="{{ emp.Email }}">
+    <input name="gender" value="{{ emp.Gender }}">
+    <input name="type" value="{{ emp.Emp_type }}">
+    <!-- <input name="status" value="{{ emp.status }}"> -->
+    <!-- <input name="dob" value="{{ emp.Dob }}"> -->
+    <!-- <input name="doj" value="{{ emp.doj }}"> -->
+    <input type="date" name="dob" value="{{ emp.Dob|date:'Y-m-d' }}">
+    <input type="date" name="doj" value="{{ emp.doj|date:'Y-m-d' }}">
+    <input name="designation" value="{{ emp.Designation }}">
+    <input name="department" value="{{ emp.Department }}">
+    <input name="salary" value="{{ emp.Salary }}">
+    <input name="status" value="{{ emp.status }}">
+
+    <button type="submit">Save Changes</button>
+</form>

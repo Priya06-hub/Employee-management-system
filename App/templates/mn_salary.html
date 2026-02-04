@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Details</title>
+    <link rel="stylesheet" href="{% static 'css/mn_salary.css' %}">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="top-header">
+    <h2>Salary Details</h2>
+    <a href="/" class="back-btn">⬅ Dashboard</a>
+</header>
+
+<!-- ===== Salary Summary ===== -->
+<section class="salary-summary">
+    <div class="salary-card">
+        <h4>Basic Salary</h4>
+        <p>₹30,000</p>
+    </div>
+
+    <div class="salary-card">
+        <h4>HRA</h4>
+        <p>₹8,000</p>
+    </div>
+
+    <div class="salary-card">
+        <h4>DA</h4>
+        <p>₹4,000</p>
+    </div>
+
+    <div class="salary-card deduction">
+        <h4>Deductions</h4>
+        <p>₹3,000</p>
+    </div>
+
+    <div class="salary-card net">
+        <h4>Net Salary</h4>
+        <p>₹39,000</p>
+    </div>
+</section>
+
+<!-- ===== Salary Table ===== -->
+<section class="table-section">
+    <h3>Monthly Salary Record</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Salary ID</th>
+                <th>Employee ID</th>
+                <th>Bonus</th>
+                <th>Net Salary</th>
+                <th>Pay Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SAL001</td>
+                <td>EMP001</td>
+                <td>₹2,000</td>
+                <td>₹39,000</td>
+                <td>December 2025</td>
+                <td class="paid">Paid</td>
+            </tr>
+            <tr>
+                <td>SAL002</td>
+                <td>EMP001</td>
+                <td>₹1,500</td>
+                <td>₹38,500</td>
+                <td>November 2025</td>
+                <td class="paid">Paid</td>
+            </tr>
+            <tr>
+                <td>SAL003</td>
+                <td>EMP001</td>
+                <td>₹0</td>
+                <td>₹37,000</td>
+                <td>October 2025</td>
+                <td class="pending">Pending</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>

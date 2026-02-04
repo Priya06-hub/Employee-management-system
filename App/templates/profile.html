@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+<section class="profile-container">
+    <div class="profile-header">
+        <div class="header-icon">👤</div>
+        <div class="header-text">
+            <h2>Employee Profile</h2>
+            <p>Manage employee personal and professional details</p>
+        </div>
+    </div>
+
+    <form id="employeeForm" class="two-column-form" method="POST">
+        {% csrf_token %}
+
+        <!-- Employee ID -->
+        <div class="form-group">
+            <label>Employee ID</label>
+            <input type="text" id="empId" name="emp_id" value="{{ employee.Emp_id }}" readonly>
+        </div>
+
+        <!-- Employee Type -->
+        <div class="form-group">
+            <label>Employee Type</label>
+            <select id="type" name="emp_type" required>
+                <option value="">Select</option>
+                <option value="Contract" {% if employee.Emp_type == "Contract" %}selected{% endif %}>Contract</option>
+                <option value="Internship" {% if employee.Emp_type == "Internship" %}selected{% endif %}>Internship</option>
+                <option value="Permanent" {% if employee.Emp_type == "Permanent" %}selected{% endif %}>Permanent</option>
+            </select>
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName" name="f_name" value="{{ employee.F_name }}" required>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName" name="l_name" value="{{ employee.L_name }}" required>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group full-width">
+            <label>Address</label>
+            <textarea id="address" name="address" rows="2" required>{{ employee.Address }}</textarea>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" name="email" value="{{ employee.Email }}" required>
+        </div>
+
+        <!-- Contact -->
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="number" id="contact" name="phone" value="{{ employee.Contact_no }}" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="inline">
+                <label><input type="radio" name="gender" value="Male" {% if employee.Gender == 'Male' %}checked{% endif %}> Male</label>
+                <label><input type="radio" name="gender" value="Female" {% if employee.Gender == "Female" %}checked{% endif %}> Female</label>
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group">
+            <label>Status</label>
+            <div class="inline">
+                <label><input type="radio" name="status" value="Active" {% if employee.status == "Active" %}checked{% endif %}> Active</label>
+                <label><input type="radio" name="status" value="Inactive" {% if employee.status == "Inactive" %}checked{% endif %}> Inactive</label>
+            </div>
+        </div>
+
+        <!-- DOB -->
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" id="dob" name="dob" value="{{ employee.Dob|date:'Y-m-d' }}" required>
+        </div>
+
+        <!-- DOJ -->
+        <div class="form-group">
+            <label>Date of Joining</label>
+            <input type="date" id="doj" name="doj" value="{{ employee.doj|date:'Y-m-d' }}" required>
+        </div>
+
+        <!-- Designation -->
+        <div class="form-group">
+            <label>Designation</label>
+            <select id="designation" name="designation" required>
+                <option value="">Select</option>
+                <option value="Employee" {% if employee.Designation == "Employee" %}selected{% endif %}>Employee</option>
+                <option value="HR" {% if employee.Designation == "HR" %}selected{% endif %}>HR</option>
+                <option value="Manager" {% if employee.Designation == "Manager" %}selected{% endif %}>Manager</option>
+            </select>
+        </div>
+
+        <!-- Department -->
+        <div class="form-group">
+            <label>Department</label>
+            <select id="department" name="department" required>
+                <option value="">Select</option>
+                <option value="IT" {% if employee.Department == "IT" %}selected{% endif %}>IT</option>
+                <option value="Finance" {% if employee.Department == "Finance" %}selected{% endif %}>Finance</option>
+                <option value="Accounting" {% if employee.Department == "Accounting" %}selected{% endif %}>Accounting</option>
+                <option value="Sales" {% if employee.Department == "Sales" %}selected{% endif %}>Sales</option>
+                <option value="Marketing" {% if employee.Department == "Marketing" %}selected{% endif %}>Marketing</option>
+                <option value="Production" {% if employee.Department == "Production" %}selected{% endif %}>Production</option>
+                <option value="Purchase" {% if employee.Department == "Purchase" %}selected{% endif %}>Purchase</option>
+                <option value="Research & Development" {% if employee.Department == "Research & Development" %}selected{% endif %}>Research & Development</option>
+                <option value="Customer Service" {% if employee.Department == "Customer Service" %}selected{% endif %}>Customer Service</option>
+            </select>
+        </div>
+
+        <!-- Salary -->
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" step="0.01" id="salary" name="salary" value="{{ employee.Salary }}" required>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group full-width">
+            <button type="submit">Save Profile</button>
+        </div>
+        {% if error %}
+        <div class="error-msg">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if success %}
+        <div class="success-msg">
+        {{ success }}
+        </div>
+        {% endif %}
+
+
+    </form>
+</section>
+
+<!-- <script src="{% static 'js/profile.js' %}"></script> -->
+</body>
+</html>

@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #e8f7f9, #f6fcfd);
+}
+
+.top-header {
+    background: #ffffff;
+    padding: 18px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.top-header h2 {
+    color: #26b6c6;
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.search-card,
+.attendance-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.search-card h3,
+.attendance-card h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.search-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #26b6c6;
+}
+
+button {
+    margin-top: 25px;
+    background: #26b6c6;
+    color: #fff;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1aa0af;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}

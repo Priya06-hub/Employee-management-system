@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- <link rel="stylesheet" href="{% static 'css/home.css' %}"> -->
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <div class="hero-content hero-text">
+        <h1>EMS – Employee Management System</h1>
+        <p>
+            The Employee Management System (EMS) is a part of the Human Resource
+            Management System (HRMS) designed to streamline and automate HR
+            processes related to employee data management. It improves efficiency,
+            reduces paperwork, ensures compliance with labour laws, and provides
+            real-time access to employee information.
+        </p>
+    </div>
+
+    <div class="hero-image">
+        <img src="{% static 'img/hero_illustration.svg' %}" alt="EMS Illustration">
+    </div>
+</section>
+
+<!-- ================= FEATURES SECTION ================= -->
+<section class="features-grid">
+    <div class="feature-card">
+        <h3>Employee Records</h3>
+        <p>
+            Maintain centralized employee profiles including personal details,
+            job roles, documents, and employment history for easy access.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Attendance Management</h3>
+        <p>
+            Track daily attendance, working hours, holidays, and shifts with
+            automated calculations and real-time updates.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Leave Management</h3>
+        <p>
+            Employees can apply for leave online while managers and HR can
+            approve, reject, and monitor leave balances efficiently.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Payroll Support</h3>
+        <p>
+            Generate payroll-ready data based on attendance and leave records
+            while ensuring accuracy and statutory compliance.
+        </p>
+    </div>
+</section>
+
+<!-- ================= WHY CHOOSE EMS ================= -->
+<section class="why-ems">
+    <h2>Why Choose EMS?</h2>
+    <p>
+        EMS helps organizations digitize HR operations, reduce manual workload,
+        improve data accuracy, and enhance transparency across departments.
+        Role-based access and secure data handling ensure a reliable and
+        scalable HR solution.
+    </p>
+</section>
+
+<!-- ================= USER ROLES ================= -->
+<section class="roles-section">
+    <h2>User Roles</h2>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Employee</h3>
+            <p>
+                View personal profile, mark attendance, apply for leave, and
+                access employment-related information securely.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>HR / Admin</h3>
+            <p>
+                Manage employee records, approve requests, monitor compliance,
+                and generate reports for decision-making.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+<section class="cta-section">
+    <h2>Get Started with EMS</h2>
+    <p>
+        Simplify employee management and boost organizational productivity
+        with a modern, secure, and efficient HR solution.
+    </p>
+    <a href="{% url 'login' %}" class="btn-teal">Login to Dashboard</a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #e9fbfc, #f8ffff);
+    padding-bottom: 50px;
+}
+
+/* HEADER */
+.top-header {
+    background: #ffffff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.top-header h2 {
+    color: #25b6c1;
+}
+
+/* EMPLOYEE SEARCH */
+.employee-search {
+    background: #ffffff;
+    margin: 30px 40px;
+    padding: 25px;
+    border-radius: 18px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.employee-search label {
+    font-weight: 600;
+    color: #555;
+}
+
+.employee-search input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.employee-search button {
+    background: #25b6c1;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* FORM */
+.form-container {
+    background: #ffffff;
+    margin: 0 40px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.form-container h3 {
+    color: #25b6c1;
+    margin-bottom: 25px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+input:focus {
+    border-color: #25b6c1;
+}
+
+/* BUTTON */
+.btn-submit {
+    background: #25b6c1;
+    color: #fff;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background: #1ea2ab;
+}

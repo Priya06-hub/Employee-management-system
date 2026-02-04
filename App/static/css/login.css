@@ -1,0 +1,92 @@
+/* Hide footer only on login page */
+footer {
+    display: none;
+}
+
+/* Page wrapper */
+.login-page {
+    min-height: calc(100vh - 90px); /* navbar height approx */
+    background: #dff3f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;   /* small breathing space */
+}
+
+/* Login card */
+.login-box {
+    background: #ffffff;
+    width: 420px;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Heading */
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c2c54;
+}
+
+/* Labels */
+.login-box label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Inputs */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #2bbec2;
+}
+
+/* Links */
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.links a {
+    font-size: 14px;
+    color: #2bbec2;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 14px;
+    background: #2bbec2;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #22a6a8;
+}
+
+/* Error message */
+#errorMsg {
+    text-align: center;
+    margin-top: 10px;
+    color: red;
+}

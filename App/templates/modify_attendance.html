@@ -1,0 +1,44 @@
+<h2>HR Modify Attendance</h2>
+
+<!-- 1️⃣ Search Form -->
+<form method="POST">
+    {% csrf_token %}
+    <label>Employee ID:</label>
+    <input type="text" name="emp_id" required>
+    
+    <label>Date:</label>
+    <input type="date" name="date" required>
+    
+    <button type="submit" name="search">Search</button>
+</form>
+
+<p style="color:green;">{{ message }}</p>
+
+<!-- 2️⃣ Editable Attendance Form -->
+{% if attendance %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="attendance_id" value="{{ attendance.id }}">
+
+    <label>Employee ID:</label>
+    <input type="text" name="Emp_id" value="{{ attendance.Emp_id }}" required>
+
+    <label>Date:</label>
+    <input type="date" name="date" value="{{ attendance.date|date:'Y-m-d' }}" required>
+
+    <label>Check In:</label>
+    <input type="time" name="check_in" value="{{ attendance.check_in|time:'H:i' }}">
+
+    <label>Check Out:</label>
+    <input type="time" name="check_out" value="{{ attendance.check_out|time:'H:i' }}">
+
+    <label>Status:</label>
+    <select name="status">
+        <option value="Present" {% if attendance.status == "Present" %}selected{% endif %}>Present</option>
+        <option value="Absent" {% if attendance.status == "Absent" %}selected{% endif %}>Absent</option>
+        <option value="Leave" {% if attendance.status == "Leave" %}selected{% endif %}>Leave</option>
+    </select>
+
+    <button type="submit" name="update">Update Attendance</button>
+</form>
+{% endif %}

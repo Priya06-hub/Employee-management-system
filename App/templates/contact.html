@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section style="padding: 80px 10%;">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h1 style="font-size: 2.5rem;">Contact Us</h1>
+        <p>Have questions? We're here to help you manage your team better.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center;">
+        <div class="feature-card">
+            <h3 style="color: #32c3d1;">Sales & Inquiries</h3>
+            <p>Ready to transform your HR workflow? Reach out to our sales team for a custom quote.</p>
+            <p><strong>Email:</strong> sales@yourcompany.com</p>
+            <p><strong>Phone:</strong> +1 (555) 000-0000</p>
+        </div>
+
+        <div class="feature-card">
+            <h3 style="color: #32c3d1;">Technical Support</h3>
+            <p>Existing user experiencing a glitch? Our support engineers are available 24/7.</p>
+            <p><strong>Email:</strong> support@yourcompany.com</p>
+        </div>
+
+        <div class="feature-card">
+            <h3 style="color: #32c3d1;">Our Office</h3>
+            <p>Visit us for a coffee and a chat about the future of work.</p>
+            <p><strong>Address:</strong> 123 Business Avenue, Tech Suite 400, Silicon Valley, CA 94025</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

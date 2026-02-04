@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="{% static 'css/mn_attendance.css' %}">
+</head>
+<body>
+
+<header class="top-header">
+    <h2>Monthly Attendance</h2>
+    <a href="/" class="back-btn">⬅ Dashboard</a>
+</header>
+
+<!-- ================= Attendance Table ================= -->
+<section class="attendance-section">
+    <h3>Daily Attendance</h3>
+
+    <table class="attendance-table">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Date</th>
+                <th>Check-In Time</th>
+                <th>Check-Out Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.Emp_id.Emp_id }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.check_in }}</td>
+            <td>{{ record.check_out }}</td>
+            <td>
+                {% if record.status == "Present" %}
+                    <span class="status present">Present</span>
+                {% elif record.status == "Absent" %}
+                    <span class="status absent">Absent</span>
+                {% else %}
+                    <span class="status leave">Leave</span>
+                {% endif %}
+            </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No attendance data found</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+</section>
+
+<!-- ================= SUMMARY ROW 1 ================= -->
+<section class="summary-row">
+    <div class="summary-card">
+        <h4>Attendance ID</h4>
+        <p>#AUTO123</p>
+    </div>
+
+    <div class="summary-card">
+        <h4>Employee ID</h4>
+        <p>EMP001</p>
+    </div>
+
+    <div class="summary-card">
+        <h4>Month</h4>
+        <p>December</p>
+    </div>
+</section>
+
+<!-- ================= SUMMARY ROW 2 ================= -->
+<section class="summary-row">
+    <div class="summary-card highlight">
+        <h4>Total Days</h4>
+        <p>30</p>
+    </div>
+
+    <div class="summary-card success">
+        <h4>Present Days</h4>
+        <p>24</p>
+    </div>
+
+    <div class="summary-card danger">
+        <h4>Absent Days</h4>
+        <p>4</p>
+    </div>
+
+    <div class="summary-card warning">
+        <h4>Leave Days</h4>
+        <p>2</p>
+    </div>
+</section>
+
+<script src="{% static 'employee/js/attendance.js' %}"></script>
+</body>
+</html>

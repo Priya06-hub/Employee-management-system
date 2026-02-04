@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee Profile</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+</head>
+<body>
+
+<section class="profile-container">
+
+    <!-- Header -->
+    <div class="profile-header">
+        <div class="header-icon">👤</div>
+        <div class="header-text">
+            <h2>Employee Profile</h2>
+            <p>Manage employee personal and professional details</p>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <form id="employeeForm" class="two-column-form">
+
+        <div class="form-group">
+            <label>Employee ID</label>
+            <input type="text" id="empId" value="{{ employee.emp_id }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Employee Type</label>
+            <select id="type" required>
+                <option value="">Select</option>
+                <option {% if employee.type == "Contract" %}selected{% endif %}>Contract</option>
+                <option {% if employee.type == "Internship" %}selected{% endif %}>Internship</option>
+                <option {% if employee.type == "Permanent" %}selected{% endif %}>Permanent</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName" value="{{ employee.first_name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName" value="{{ employee.last_name }}" required>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Address</label>
+            <textarea id="address" rows="2" required>{{ employee.address }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" value="{{ employee.email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" id="contact" value="{{ employee.contact }}" maxlength="10" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="inline">
+                <label><input type="radio" name="gender" value="Male" {% if employee.gender == "Male" %}checked{% endif %}> Male</label>
+                <label><input type="radio" name="gender" value="Female" {% if employee.gender == "Female" %}checked{% endif %}> Female</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+            <div class="inline">
+                <label><input type="radio" name="status" value="Active" {% if employee.status == "Active" %}checked{% endif %}> Active</label>
+                <label><input type="radio" name="status" value="Inactive" {% if employee.status == "Inactive" %}checked{% endif %}> Inactive</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" id="dob" value="{{ employee.dob|date:'Y-m-d' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Joining</label>
+            <input type="date" id="doj" value="{{ employee.doj|date:'Y-m-d' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Designation</label>
+            <select id="designation" required>
+                <option value="">Select</option>
+                <option {% if employee.designation == "Employee" %}selected{% endif %}>Employee</option>
+                <option {% if employee.designation == "HR" %}selected{% endif %}>HR</option>
+                <option {% if employee.designation == "Manager" %}selected{% endif %}>Manager</option>
+            </select>
+        </div>
+
+         <div class="form-group">
+            <label>Department</label>
+            <select id="department" required>
+                <option value="">Select</option>
+                <option>IT</option>
+                <option>Finance</option>
+                <option>Accounting</option>
+                <option>Sales</option>
+                <option>Marketing</option>
+                <option>Production</option>
+                <option>Purchase</option>
+                <option>Research & Development</option>
+                <option>Customer Service</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="number" id="salary" value="{{ employee.salary }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter new password">
+        </div>
+
+        <div class="form-group full-width">
+            <button type="submit">Save Profile</button>
+        </div>
+
+    </form>
+</section>
+
+<script src="{% static 'employee/js/profile.js' %}"></script>
+</body>
+</html>

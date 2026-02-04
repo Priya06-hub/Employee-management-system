@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ================= FEATURES HERO ================= -->
+<section class="hero features-hero">
+    <div class="hero-text">
+        <h1>Modern Design with Essential Features</h1>
+        <p>
+            Manage your workforce with precision using our integrated HR modules
+            designed to streamline operations and enhance productivity.
+        </p>
+    </div>
+
+    <div class="hero-image features-hero-image">
+        <img src="{% static 'img/contact.svg' %}" alt="EMS Features Illustration">
+    </div>
+</section>
+
+<!-- ================= FEATURES GRID ================= -->
+<section class="features-grid">
+
+    <div class="feature-card">
+        <i class="fa-solid fa-calendar-check feature-icon"></i>
+        <h3>Attendance & Leave Management</h3>
+        <p>
+            Automate attendance tracking with real-time clock-ins and clock-outs.
+            Employees can request leave via a self-service portal while managers
+            approve requests instantly, ensuring accurate and audit-ready records.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-wallet feature-icon"></i>
+        <h3>Salary Management</h3>
+        <p>
+            Streamline payroll with automated salary calculations, tax deductions,
+            and payslip generation. Integrated attendance data ensures accurate
+            and timely employee compensation.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-list-check feature-icon"></i>
+        <h3>Task Management</h3>
+        <p>
+            Assign, track, and manage tasks using a centralized workspace.
+            Visual dashboards help teams stay aligned with deadlines and priorities.
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-chart-line feature-icon"></i>
+        <h3>Performance Management</h3>
+        <p>
+            Monitor KPIs, conduct performance reviews, and provide continuous
+            feedback to support employee growth and data-driven HR decisions.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply for Leave</title>
+    <link rel="stylesheet" href="{% static 'css/mn_leave.css' %}">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="top-header">x
+    <h2>Apply for Leave</h2>
+    <a href="/" class="back-btn">⬅ Dashboard</a>    
+</header>
+
+<!-- ===== Leave Summary ===== -->
+<section class="leave-summary">
+    <div class="leave-card total">
+        <h4>Total Leave Days</h4>
+        <p>{{leave_days}}</p>
+    </div>
+
+    <div class="leave-card taken">
+        <h4>Leave Taken</h4>
+        <p></p>
+    </div>
+
+    <div class="leave-card remaining">
+        <h4>Remaining Leaves</h4>
+        <p>12</p>
+    </div>
+</section>
+
+<!-- ===== Leave Form ===== -->
+<section class="leave-form-section">
+    <h3>Apply for Leave</h3>
+
+    <form class="leave-form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Leave ID</label>
+            <input type="text" value="" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Employee ID</label>
+            <input type="text" placeholder="{{employee.Emp_id}}" name="emp_id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Leave Type</label>
+            <select name="leave_type">
+                <option value="Sick Leave">Sick Leave (SL)</option>
+                <option value="Causal Leave">Casual Leave (CL)</option>
+                <option value="Maternity Leave">Maternity Leave</option>
+                <option value="Marriage Leave">Marriage Leave</option>
+                <option value="Study / Examination Leave">Study / Examination Leave</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" name="start">
+        </div>
+
+        <div class="form-group">
+            <label>End Date</label>
+            <input type="date" name="end">
+        </div>
+
+        <div class="form-group full">
+            <label>Status</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="status" > Pending
+                </label>
+                <label>
+                    <input type="radio" name="status"> Approved
+                </label>
+                <label>
+                    <input type="radio" name="status"> Rejected
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group full">
+            <button type="submit" class="submit-btn">
+                Submit Application
+            </button>
+        </div>
+    </form>
+</section>
+
+</body>
+</html>
