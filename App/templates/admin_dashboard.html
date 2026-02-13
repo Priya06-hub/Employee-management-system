@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
@@ -8,15 +9,40 @@
 <h2>Welcome, Admin</h2>
 
 <div class="cards">
-    <div class="card orange">Total Employees<br><strong>2</strong></div>
-    <div class="card purple">On Leave Today<br><strong>0</strong></div>x
-    <div class="card teal">Total Departments<br><strong>6</strong></div>
+    <div class="card orange">Total Employees<br><strong>{{ total_employees }}</strong></div>
+    <div class="card purple">On Leave Today<br><strong>0</strong></div>
+    <div class="card teal">Total Departments<br><strong>{{ total_departments }}</strong></div>
     <div class="card blue">Pending Approvals<br><strong>0</strong></div>
 </div>
+
+<hr>
+
+<h3>Employees</h3>
+<table border="1" width="100%">
+    <tr>
+        <th>Emp ID</th>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Action</th>
+    </tr>
+
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.Emp_id }}</td>
+        <td>{{ emp.F_name }} {{ emp.L_name }}</td>
+        <td>{{ emp.Designation }}</td>
+        <td>
+            <a href="{% url 'admin_edit_profile' emp.Emp_id %}">
+                Edit Profile
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
 <ul>
-    <li><a href="{% url 'create_profile' %}">create_profile</a></li>
-    <li><a href="{% url 'about' %}">Upload document</a></li>
-    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+    <li><a href="{% url 'create_profile' %}">Create Employee</a></li>
+    <li><a href="{% url 'my_profile' %}">My Profile</a></li>
 </ul>
-<!-- <script src="{% static 'js/dashboard.js' %}"></script> -->
+
 {% endblock %}

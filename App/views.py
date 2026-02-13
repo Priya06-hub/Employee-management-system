@@ -32,7 +32,20 @@ def contact(request):
     return render(request, 'contact.html')
 @login_required
 def admin_dashboard(request):
-    return render(request, 'admin_dashboard.html')
+    employees = Employee.objects.all()
+
+    total_employees = employees.count()
+    total_departments = Employee.objects.values('Department').distinct().count()
+
+    context = {
+        'employees': employees,
+        'total_employees': total_employees,
+        'total_departments': total_departments,
+        'on_leave_today': 0,        # can be dynamic later
+        'pending_approvals': 0      # can be dynamic later
+    }
+
+    return render(request, 'admin_dashboard.html', context)
 
 def emp_login_required(view_func):
     def wrapper(request, *args, **kwargs):
@@ -397,17 +410,9 @@ def mn_attendance(request):
 
     return render(request, 'mn_attendance.html',{'records':records})
 
-# from django.shortcuts import get_object_or_404
-
-# from django.shortcuts import get_object_or_404, render
-# from .models import leave
 
 @emp_login_required
 def mark_attendance(request):
-    # emp = request.user.Employee 
-    # if request.method !="POST":
-        # return {'error':'Invalid request method'}
-
     session_emp_id = request.session.get('Emp_id')
     emp = get_object_or_404(Employee, Emp_id=session_emp_id)
     today = date.today()
@@ -444,7 +449,7 @@ def leave_approval(request, leave_id):
         
         return redirect('leave_list')
 
-    # return render(request, 'leave_approval.html', {'leave': lv})
+
 
 
 
@@ -469,13 +474,13 @@ def mn_salary(request):
 # @login_required
 def manage_profile(request, emp_id=None):
 
-    # ADMIN
+
     if request.user.is_superuser and emp_id:
         is_admin = True
         emp = get_object_or_404(Employee, Emp_id=emp_id)
         return render(request, 'admin_profile.html', {'employee': emp})
 
-    # HR / MANAGER / EMPLOYEE
+
     session_emp_id = request.session.get('Emp_id')
 
     if not session_emp_id:
@@ -508,14 +513,11 @@ def manage_profile(request, emp_id=None):
 
             emp.save()
             print("profile updated")
-            return render(request,'manager_dashboard.html',{"succes":"YOUR PROFILE UPDATAED SUCCESSFULLY......"})
+            return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+
+            # return render(request,'manager_dashboard.html',{"succes":"YOUR PROFILE UPDATAED SUCCESSFULLY......"})
 
     return render(request, 'profile.html', {'employee': emp})
-
-def mn_performance(request):
-    return render(request,'mn_performance.html')
-def mn_salary(request):
-    return render(request,'mn_salary.html')
 def emp_dashboard(request): 
     return render(request, 'emp_dashboard.html')
 def manager_dashboard(request): 
@@ -589,9 +591,35 @@ def emp_task_list(request):
             task.completed_date = date.today()
             task.save()
             messages.success(request, "Task marked as completed.")
-
+ 
         return redirect('emp_task_list')
     tasks = Task.objects.filter(Emp_id__Emp_id=emp_id)
 
     return render(request, 'emp_task_list.html', {'tasks': tasks})
 
+def add_salary_data(request):
+    if request.method == "POST":
+        emp_id = request.POST.get('emp_id')
+        month = request.POST.get('month')
+        basic_salary = request.POST.get('basic_salary')
+        allowance = request.POST.get('allowance')
+        deduction = request.POST.get('deduction')
+
+        emp = Employee.objects.get(Emp_id=emp_id)
+
+        Salary.objects.create(
+            Emp_id=emp,
+            month=month,
+            basic_salary=basic_salary,
+        )
+
+        return redirect('salary_list')
+    return render(request,'add_salary_data.html')
+
+def salary_list(request):
+    return render(request,'salary_list.html')
+
+def performance_view(request):
+    emp_id = request.session.get('Emp_id')
+    performance_records = performance.objects.filter(Emp_id__Emp_id=emp_id)
+    return render(request, 'mn_performance.html', {'performance_records': performance_records})

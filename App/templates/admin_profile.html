@@ -1,51 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Employee Profile</title>
+    <title>Admin Employee Profile</title>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 </head>
 <body>
 
 <section class="profile-container">
-    <div class="profile-header">
-        <div class="header-icon">👤</div>
-        <div class="header-text">
-            <h2>Employee Profile</h2>
-            <p>Manage your personal details</p>
-        </div>
-    </div>
+    <h2>Admin – Edit Employee Profile</h2>
 
     <form method="POST" class="two-column-form">
         {% csrf_token %}
 
-        <!-- Employee ID -->
         <div class="form-group">
             <label>Employee ID</label>
-            <input type="text" value="{{ employee.Emp_id }}" name="emp_id" readonly>
+            <input type="text" value="{{ employee.Emp_id }}" readonly>
         </div>
 
-        <!-- First Name -->
+        <div class="form-group">
+            <label>Employee Type</label>
+            <select name="emp_type">
+                <option value="Contract" {% if employee.Emp_type == "Contract" %}selected{% endif %}>Contract</option>
+                <option value="Internship" {% if employee.Emp_type == "Internship" %}selected{% endif %}>Internship</option>
+                <option value="Permanent" {% if employee.Emp_type == "Permanent" %}selected{% endif %}>Permanent</option>
+            </select>
+        </div>
+
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" name="f_name" value="{{ employee.F_name }}" required>
+            <input type="text" name="f_name" value="{{ employee.F_name }}">
         </div>
 
-        <!-- Last Name -->
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" name="l_name" value="{{ employee.L_name }}" required>
+            <input type="text" name="l_name" value="{{ employee.L_name }}">
         </div>
 
-        <!-- Address -->
         <div class="form-group full-width">
-            <label>Address</label>
-            <textarea name="address" rows="2" required>{{ employee.Address }}</textarea>
-        </div>
-
-        <!-- Email -->
-       <div class="form-group">
+        <label>Address</label>
+        <textarea name="address" rows="2" value="{{ employee.Address }}"></textarea>
+    </div>
+    <div class="form-group">
             <label>Email</label>
             <input type="email" name="email" value="{{ employee.Email }}" required>
         </div>
@@ -71,44 +67,42 @@
 
         <!-- ===== READ ONLY ADMIN DATA ===== -->
 
-        <div class="form-group">
-            <label>Employee Type</label>
-            <input type="text" value="{{ employee.Emp_type }}" name="emp_type" readonly>
-        </div>
 
         <div class="form-group">
             <label>Designation</label>
-            <input type="text" value="{{ employee.Designation }}" name="designation" readonly>
+            <select name="designation">
+                <option value="Employee" {% if employee.Designation == "Employee" %}selected{% endif %}>Employee</option>
+                <option value="Manager" {% if employee.Designation == "Manager" %}selected{% endif %}>Manager</option>
+                <option value="HR" {% if employee.Designation == "HR" %}selected{% endif %}>HR</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label>Department</label>
-            <input type="text" value="{{ employee.Department }}" name="department" readonly>
+            <input type="text" name="department" value="{{ employee.Department }}">
         </div>
 
         <div class="form-group">
             <label>Salary</label>
-            <input type="text" value="{{ employee.Salary }}" name="salary" readonly>
+            <input type="number" name="salary" value="{{ employee.Salary }}">
         </div>
 
         <div class="form-group">
             <label>Status</label>
-            <input type="text" value="{{ employee.status }}" name="status" readonly>
+            <select name="status">
+                <option value="Active" {% if employee.status == "Active" %}selected{% endif %}>Active</option>
+                <option value="Inactive" {% if employee.status == "Inactive" %}selected{% endif %}>Inactive</option>
+            </select>
         </div>
 
         <div class="form-group">
             <label>Date of Joining</label>
-            <input type="date" value="{{ employee.doj|date:'Y-m-d' }}" name="doj" readonly>
+            <input type="date" name="doj" value="{{ employee.doj|date:'Y-m-d' }}">
         </div>
 
-        <!-- Submit -->
         <div class="form-group full-width">
-            <button type="submit">Update Profile</button>
+            <button type="submit">Save Changes</button>
         </div>
-        <div class="form-group full-width">
-            <button type="submit">back</button>
-        </div>
-        
     </form>
 </section>
 
